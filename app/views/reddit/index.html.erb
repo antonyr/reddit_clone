@@ -1,0 +1,35 @@
+<% @articles.each do |article| %>
+<div class="row well">
+  <div class="span1">
+    <img src="<%= show_if_image(article.thumbnail) %>">
+  </div>
+  <div class="span7">
+    <p>
+      <a href="<%= article.url %>">
+        <%= article.title %>
+        <% if image_view?(article.url) %>
+        <i class="icon-picture"></i>
+        <% end %>
+      </a>
+    </p>
+    <p class="grey-small">
+      <a href="http://www.reddit.com/user/<%= article.author %>
+        ">
+        <%= article.author %></a>
+    </p>
+    <p class="grey-small">
+      <%= article.published_time %>
+    </p>
+  </div>
+</div>
+<% end%>
+
+<div class="pagination pull-right">
+  <%= paginate @articles %>
+</div>
+
+<div class="modal" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-body">
+    <img id="image-popup" src="">
+  </div>
+</div>
